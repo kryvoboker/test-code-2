@@ -1,0 +1,5 @@
+.idea
+logs/*
+db/*
+docker-compose.yml
+env/*
