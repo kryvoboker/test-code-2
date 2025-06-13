@@ -13,11 +13,12 @@ class TrelloService
 {
 	const string TELEGRAM_GROUP_ID = '-1002586097522';
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return void
-	 */
+    /**
+     * @param Request $request
+     *
+     * @return void
+     * @throws TelegramException
+     */
 	public function handleList(Request $request) : void
 	{
 		if ($request->input('action') === null) {

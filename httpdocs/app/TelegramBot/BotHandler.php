@@ -14,7 +14,6 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 use Longman\TelegramBot\Entities\Update;
 use Longman\TelegramBot\Exception\TelegramException;
-use Longman\TelegramBot\Telegram;
 use Throwable;
 
 class BotHandler

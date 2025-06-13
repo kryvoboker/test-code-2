@@ -22,6 +22,11 @@ class TrelloController extends Controller
         http_response_code(200);
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return void
+     */
     public function handleList(Request $request) : void
     {
         $this->trello_service->handleList($request);
