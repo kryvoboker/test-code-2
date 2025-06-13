@@ -8,4 +8,5 @@ return [
     // error
     'error_chat_id'                     => 'Chat ID is not present!',
     'error_call_not_from_user_directly' => '‼️ Sorry, but bot commands can only be used in private messages with it❗️ Thank you ❗️😊',
+    'text_support_only_text'            => '❗️ Sorry, but I support only text messages 😭 Please, send me text message only❗️',
 ];
