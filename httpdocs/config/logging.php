@@ -127,6 +127,29 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        'buggregator_monolog' => [
+            'driver'       => 'monolog',
+            'level'        => env('LOG_LEVEL', 'debug'),
+            'handler'      => \Monolog\Handler\SocketHandler::class,
+            'formatter'    => \Monolog\Formatter\JsonFormatter::class,
+            'handler_with' => [
+                'connectionString' => env('LOG_SOCKET_URL', '127.0.0.1:9913'),
+            ],
+        ],
+
+        'buggregator_monolog_telegram_bot' => [
+            'driver'       => 'monolog',
+            'level'        => env('LOG_LEVEL', 'debug'),
+            'handler'      => \Monolog\Handler\TelegramBotHandler::class,
+            'formatter'    => \Monolog\Formatter\LineFormatter::class,
+            'handler_with' => [
+                'apiKey'               => config('buggregator.telegram_token'),
+                'channel'              => config('buggregator.kamaz_id'),
+                'splitLongMessages'    => true,
+                'delayBetweenMessages' => 1,
+            ],
+        ],
+
     ],
 
 ];

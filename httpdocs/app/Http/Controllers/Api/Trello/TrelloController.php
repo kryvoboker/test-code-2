@@ -12,9 +12,14 @@ class TrelloController extends Controller
 {
     public function __construct(private readonly TrelloService $trello_service) {}
 
+    /**
+     * @return void
+     */
     public function returnStatusOk() : void
     {
-        return;
+        // This method is used to return a 200 OK status for Trello webhook list requests.
+        // It does not need to do anything else.
+        http_response_code(200);
     }
 
     public function handleList(Request $request) : void

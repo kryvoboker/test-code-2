@@ -10,6 +10,6 @@ class TrelloService
 {
     public function handleList(Request $request) : void
     {
-
+        dump($request->all());
     }
 }
