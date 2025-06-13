@@ -11,7 +11,7 @@ use Longman\TelegramBot\Exception\TelegramException;
 
 class TrelloService
 {
-	const string TELEGRAM_GROUP_ID = '-1002586097522';
+	const string TELEGRAM_GROUP_ID = '-4883371074';
 
     /**
      * @param Request $request

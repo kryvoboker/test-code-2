@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Api\Trello;
 use App\Http\Controllers\Controller;
 use App\Services\Api\Trello\TrelloService;
 use Illuminate\Http\Request;
+use Longman\TelegramBot\Exception\TelegramException;
 
 class TrelloController extends Controller
 {
@@ -26,6 +27,7 @@ class TrelloController extends Controller
      * @param Request $request
      *
      * @return void
+     * @throws TelegramException
      */
     public function handleList(Request $request) : void
     {
