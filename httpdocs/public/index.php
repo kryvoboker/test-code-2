@@ -3,6 +3,22 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 
+// Отключаем вывод ошибок на экран
+ini_set('display_errors', 0);
+// Включаем логирование ошибок
+ini_set('log_errors', 1);
+// Указываем файл для записи ошибок
+ini_set('error_log', __DIR__ . '/error.log');
+// Отображаем все типы ошибок
+error_reporting(E_ALL);
+
+// Пользовательский обработчик ошибок
+set_error_handler(function($errno, $errstr, $errfile, $errline) {
+	// Записываем ошибку в файл
+	error_log("[$errno] $errstr в $errfile на строке $errline");
+	// Дополнительная логика обработки ошибки (если требуется)
+});
+
 define('LARAVEL_START', microtime(true));
 
 // Determine if the application is in maintenance mode...

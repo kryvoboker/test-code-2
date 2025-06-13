@@ -5,6 +5,8 @@ declare(strict_types = 1);
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Longman\TelegramBot\Entities\Update;
+use Longman\TelegramBot\Exception\TelegramException;
+use Longman\TelegramBot\Telegram;
 
 if (!function_exists('get_telegram_chat_id')) {
     /**
@@ -127,4 +129,22 @@ if (!function_exists('is_not_call_directly_from_user')) {
 
         return $chat_id !== $telegram_user_id;
     }
+}
+
+if (!function_exists('create_telegram_bot_instance')) {
+	/**
+	 * @return Telegram
+	 * @throws TelegramException
+	 */
+	function create_telegram_bot_instance() : Telegram
+	{
+		$bot_token = config('telegram.bot_token');
+		$bot_name = config('telegram.bot_name');
+
+		if (empty($bot_token) || empty($bot_name)) {
+			throw new \RuntimeException('Telegram Bot API Key or Username is not set in the configuration.');
+		}
+
+		return new Telegram($bot_token, $bot_name);
+	}
 }

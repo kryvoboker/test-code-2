@@ -102,12 +102,9 @@ class BotHandler
      */
     private function tryGetUpdate()
     {
-        if (config('app.env') == 'local') {
-            $telegram = new Telegram(
-                config('telegram.bot_token'),
-                config('telegram.bot_name')
-            )->useGetUpdatesWithoutDatabase();
+		$telegram = create_telegram_bot_instance();
 
+        if (config('app.env') == 'local') {
             $response = $telegram->handleGetUpdates();
 
             /**
@@ -117,11 +114,6 @@ class BotHandler
              */
             $update = ($response->getResult()[0] ?? null);
         } else {
-            new Telegram(
-                config('telegram.bot_token'),
-                config('telegram.bot_name')
-            )->useGetUpdatesWithoutDatabase();
-
             $raw     = file_get_contents('php://input');
             $payload = json_decode($raw, true);
 
